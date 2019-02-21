@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
     <style>
         html {
             height: 100%;
@@ -37,8 +38,23 @@
             width: 11.1%;
             text-align: center;
         }
-
     </style>
+    
+    <script>
+        $(document).ready(function () {
+            $(".six").click(function(){
+                var six_content = '<iframe src="https://www.enjoysix.cn/mobile/ele/shop/shop_id/71.html" style="width: 100%; height: 100%" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>';
+                $(".content").html(six_content)
+            });
+
+            $(".door").click(function(){
+                var door_content = '<iframe src="https://www.baidu.com" style="width: 100%; height: 100%" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>';
+                $(".content").html(door_content)
+            });
+
+        })
+    </script>
+    
 </head>
 <body>
 <body>
@@ -47,19 +63,44 @@
     </div>
     <footer class="footer">
         <div style="display: flex; align-items: center;justify-content: center; height: 100px">
-            <div class="bottom_item">
-                <div style="display: flex; flex-direction: row">
-
+            <div class="bottom_item six">
+                <div style="display: flex; flex-direction: column">
+                    <div><img style="height: 50px; width: 50px" src="icon/six.png" alt=""></div>
+                    <div>六享生活</div>
                 </div>
             </div>
-            <div class="bottom_item">门禁系统</div>
-            <div class="bottom_item">衣服浣洗</div>
-            <div class="bottom_item">小区商铺</div>
-            <div class="bottom_item">家政服务</div>
-            <div class="bottom_item">社区物业</div>
-            <div class="bottom_item">娱乐活动</div>
-            <div class="bottom_item">个人中心</div>
-            <div class="bottom_item">紧急求助</div>
+            <div class="bottom_item door">
+                <div><img style="height: 50px; width: 50px" src="icon/door.png" alt=""></div>
+                <div>门禁系统</div>
+            </div>
+            <div class="bottom_item">
+                <div><img style="height: 50px; width: 50px" src="icon/huanyi.png" alt=""></div>
+                <div>衣服浣洗</div>
+            </div>
+            <div class="bottom_item">
+                <div><img style="height: 50px; width: 50px" src="icon/shangpu.png" alt=""></div>
+                <div>小区商铺</div>
+            </div>
+            <div class="bottom_item">
+                <div><img style="height: 50px; width: 50px" src="icon/jiazheng.png" alt=""></div>
+                <div>家政服务</div>
+            </div>
+            <div class="bottom_item">
+                <div><img style="height: 50px; width: 50px" src="icon/shequ.png" alt=""></div>
+                <div>社区物业</div>
+            </div>
+            <div class="bottom_item">
+                <div><img style="height: 50px; width: 50px" src="icon/six.png" alt=""></div>
+                <div>娱乐活动</div>
+            </div>
+            <div class="bottom_item">
+                <div><img style="height: 50px; width: 50px" src="icon/geren.png" alt=""></div>
+                <div>个人中心</div>
+            </div>
+            <div class="bottom_item">
+                <div><img style="height: 50px; width: 50px" src="icon/qiuzhu.png" alt=""></div>
+                <div>紧急求助</div>
+            </div>
         </div>
     </footer>
 </body>
