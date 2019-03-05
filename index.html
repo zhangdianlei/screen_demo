@@ -17,6 +17,7 @@
             -webkit-flex-direction: column;
             margin: 0px;
         }
+
         .content {
             flex: 1;
             -webkit-flex: 1;
@@ -25,78 +26,135 @@
             overflow-y: auto;
             background-color: white;
         }
+
         .footer {
             width: 100%;
             height: 100px;
             background-color: antiquewhite;
         }
+
         .bottom_item {
             width: 11.1%;
             text-align: center;
         }
     </style>
-    
+
+
+    <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+    <php>
+
+
+        function signc($parameter,$secretKey)
+        {
+            $signStr = "";
+            ksort($parameter);
+            foreach ($parameter as $k => $v) {
+
+                if ($signStr == "") {
+                    $signStr = $k . "=" . $v;
+                } else {
+                    $signStr .= "&" . $k . "=" . $v;
+                }
+            }
+            return  strtoupper(MD5($signStr.$secretKey));
+        }
+
+        $accessKey = "6825691001";
+        $secretKey = 'h9w7c13ju681u665698bcu';
+
+        $data=[
+            'mobile' => 17753293739,
+            'id' => 11,
+            'accessKey' => $accessKey,
+            'timestamp' => time(),
+            'nonce' => 'dddd5678',
+        ];
+
+        $sign = signc($data,$secretKey);
+        $data['sign'] = $sign;
+
+        $url = 'https://wx.ihuanxi.cn/proj/hxApi/wash.php';
+
+        $para = http_build_query($data);
+
+    </php>
+
+
     <script>
         $(document).ready(function () {
-            $(".six").click(function(){
+            $(".six").click(function () {
                 var six_content = '<iframe src="https://www.enjoysix.cn/mobile/ele/shop/shop_id/71.html" style="width: 100%; height: 100%" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>';
                 $(".content").html(six_content)
             });
-            $(".door").click(function(){
+
+            $(".door").click(function () {
                 var door_content = '<iframe src="https://www.baidu.com" style="width: 100%; height: 100%" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>';
                 $(".content").html(door_content)
             });
+
+            $(".ucenter").click(function () {
+                var door_content = '<iframe src="http://45.76.214.139/mcenter/member" style="width: 100%; height: 100%" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>';
+                $(".content").html(door_content)
+            });
+
+            $(".huanxi").click(function () {
+                var door_content = '<iframe src="https://wx.ihuanxi.cn/proj/hxApi/wash.php?<?php echo $para;?>" style="width: 100%; height: 100%" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>';
+                $(".content").html(door_content)
+            });
+
         })
     </script>
-    
+
 </head>
 <body>
 <body>
-    <div class="content">
-        <iframe src="https://www.enjoysix.cn/mobile/ele/shop/shop_id/71.html" style="width: 100%; height: 100%" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>
-    </div>
-    <footer class="footer">
-        <div style="display: flex; align-items: center;justify-content: center; height: 100px">
-            <div class="bottom_item six">
-                <div style="display: flex; flex-direction: column">
-                    <div><img style="height: 50px; width: 50px" src="icon/six.png" alt=""></div>
-                    <div>六享生活</div>
-                </div>
-            </div>
-            <div class="bottom_item door">
-                <div><img style="height: 50px; width: 50px" src="icon/door.png" alt=""></div>
-                <div>门禁系统</div>
-            </div>
-            <div class="bottom_item">
-                <div><img style="height: 50px; width: 50px" src="icon/huanyi.png" alt=""></div>
-                <div>衣服浣洗</div>
-            </div>
-            <div class="bottom_item">
-                <div><img style="height: 50px; width: 50px" src="icon/shangpu.png" alt=""></div>
-                <div>小区商铺</div>
-            </div>
-            <div class="bottom_item">
-                <div><img style="height: 50px; width: 50px" src="icon/jiazheng.png" alt=""></div>
-                <div>家政服务</div>
-            </div>
-            <div class="bottom_item">
-                <div><img style="height: 50px; width: 50px" src="icon/shequ.png" alt=""></div>
-                <div>社区物业</div>
-            </div>
-            <div class="bottom_item">
+<div class="content">
+    <iframe src="https://www.enjoysix.cn/mobile/ele/shop/shop_id/71.html" style="width: 100%; height: 100%"
+            frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>
+</div>
+<footer class="footer">
+    <div style="display: flex; align-items: center;justify-content: center; height: 100px">
+        <div class="bottom_item six">
+            <div style="display: flex; flex-direction: column">
                 <div><img style="height: 50px; width: 50px" src="icon/six.png" alt=""></div>
-                <div>娱乐活动</div>
-            </div>
-            <div class="bottom_item">
-                <div><img style="height: 50px; width: 50px" src="icon/geren.png" alt=""></div>
-                <div>个人中心</div>
-            </div>
-            <div class="bottom_item">
-                <div><img style="height: 50px; width: 50px" src="icon/qiuzhu.png" alt=""></div>
-                <div>紧急求助</div>
+                <div>六享生活</div>
             </div>
         </div>
-    </footer>
+        <div class="bottom_item door">
+            <div><img style="height: 50px; width: 50px" src="icon/door.png" alt=""></div>
+            <div>门禁系统</div>
+        </div>
+        <div class="bottom_item huanxi">
+            <div><img style="height: 50px; width: 50px" src="icon/huanyi.png" alt=""></div>
+            <div>衣服浣洗</div>
+        </div>
+        <div class="bottom_item">
+            <div><img style="height: 50px; width: 50px" src="icon/shangpu.png" alt=""></div>
+            <div>小区商铺</div>
+        </div>
+        <div class="bottom_item">
+            <div><img style="height: 50px; width: 50px" src="icon/jiazheng.png" alt=""></div>
+            <div>家政服务</div>
+        </div>
+        <div class="bottom_item">
+            <div><img style="height: 50px; width: 50px" src="icon/shequ.png" alt=""></div>
+            <div>社区物业</div>
+        </div>
+        <div class="bottom_item">
+            <div><img style="height: 50px; width: 50px" src="icon/six.png" alt=""></div>
+            <div>娱乐活动</div>
+        </div>
+        <div class="bottom_item ucenter">
+            <div><img style="height: 50px; width: 50px" src="icon/geren.png" alt=""></div>
+            <div>个人中心</div>
+        </div>
+        <div class="bottom_item">
+            <div><img style="height: 50px; width: 50px" src="icon/qiuzhu.png" alt=""></div>
+            <div>紧急求助</div>
+        </div>
+    </div>
+</footer>
 </body>
 </body>
 </html>
